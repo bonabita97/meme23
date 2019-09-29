@@ -62,14 +62,14 @@ function setup() {
   });
   // Hide the video element, and just show the canvas
   video.hide();
-   x = width/2
+   //x = width/2
   //y = height/2
 
 }
 function gotPoses(poses) {
   if (poses.length > 0) {
-  let fX = poses[0].pose.keypoints[0].position.x //얼굴x =코 포지션
-  let fY = poses[0].pose.keypoints[0].position.y //얼굴y
+
+
   let hX = poses[0].pose.keypoints[0].position.x //머리x =코 포지션
   let hY = poses[0].pose.keypoints[0].position.y //머리y =코 포지션
   let nX = poses[0].pose.keypoints[0].position.x //코x
@@ -175,16 +175,13 @@ function draw() {
 }
 
 // A function to draw ellipses over the detected keypoints
-//let logged = false;
-//function drawKeypoints()  {
-	if (poses.length > 0 && !logged) {
-		console.log(poses);
-		logged = true;
-	}
+
+function drawKeypoints()  {
+
   // Loop through all the poses detected
   for (i = 0; i < poses.length; i++) {
     // For each pose detected, loop through all the keypoints
-    //let pose = poses[i].pose;
+    let pose = poses[i].pose;
 
     for (j = 0; j < pose.keypoints.length; j++) {
       // A keypoint is an object describing a body part (like rightArm or leftShoulder)
@@ -196,24 +193,5 @@ function draw() {
         ellipse(keypoint.position.x, keypoint.position.y, 10, 10);
       }
     }
-		fill(255, 0, 255);
-    noStroke();
-		ellipse(pose.nose.x, pose.nose.y, 20, 20);
   }
-}
-
-// A function to draw the skeletons
-function drawSkeleton() {
-  // Loop through all the skeletons detected
-  for (let i = 0; i < poses.length; i++) {
-    let skeleton = poses[i].skeleton;
-    // For every skeleton, loop through all body connections
-    for (let j = 0; j < skeleton.length; j++) {
-      let partA = skeleton[j][0];
-      let partB = skeleton[j][1];
-      stroke(255, 0, 0);
-      line(partA.position.x, partA.position.y, partB.position.x, partB.position.y);
-    }
-  }
-}
 }
