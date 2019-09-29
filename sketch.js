@@ -143,7 +143,7 @@ function draw() {
     // For each pose detected, loop through all the keypoints
     let pose = poses[i].pose;
 
-  let d = dist(pose.nose.x, pose.nose.y, pose.rightEye.x, pose.rightEye.y);
+  //let d = dist(pose.nose.x, pose.nose.y, pose.rightEye.x, pose.rightEye.y);
 
     imageMode(CENTER);
     image(head, pose.nose.x, pose.nose.y - 120, d * 4, d * 3); //머리=코 y축 마이너스
