@@ -26,7 +26,7 @@ let y = 0;
 
 let img;
 function preload() {
-  for (var  i = 0; i <3; i++) {
+  for (var  i = 0; i <2; i++) {
   mouths[i] = loadImage('mouths/m' + i + '.png');
   reyes[i] = loadImage('reyes/re' + i + '.png');
   leyes[i] = loadImage('leyes/le' + i + '.png');
