@@ -113,7 +113,7 @@ function gotPoses(poses) {
 
   }
 }
-
+poseNet = ml5.poseNet(modelReady, options);
 function modelReady() {
   select('#status').html('Model Loaded');
 
