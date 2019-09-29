@@ -179,7 +179,7 @@ function drawKeypoints()  {
 	if (poses.length > 0 && !logged) {
 		console.log(poses);
 		logged = true;
-	}
+	}]
 // A function to draw ellipses over the detected keypoints
 
 function drawKeypoints()  {
