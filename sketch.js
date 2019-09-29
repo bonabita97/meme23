@@ -18,8 +18,6 @@ var noses = [];
 var faces = [];
 var rears = [];
 var lears = [];
-var mic;
-var vol;
 let x = 0;
 let y = 0;
 
@@ -51,12 +49,10 @@ function preload() {
 }
 
 function setup() {
-  createCanvas(640,480);
+  createCanvas(640, 480);
   //§createCanvas(windowWidth, windowHeight);
   //video.size(width, height);
   video = createCapture(VIDEO);
-  mic = new p5.AudioIn()
-  mic.start();
   r = floor(random(0,6));
 
   //video.size(width, height);
@@ -126,7 +122,7 @@ function modelReady() {
 
 function draw() {
   //x = map(vol, 0, 0.1, 20, 200);
-  vol = mic.getLevel();
+
   push();
   scale(-1, 1);
   translate(-width, 0);
