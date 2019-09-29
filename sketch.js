@@ -45,27 +45,16 @@ function preload() {
 }
 
 function setup() {
+
   createCanvas(640, 480);
-  //§createCanvas(windowWidth, windowHeight);
-  //video.size(width, height);
   video = createCapture(VIDEO);
+  video.hide();
+  poseNet = ml5.poseNet(video, modelReady);
+  poseNet.on('pose', gotPoses);
   r = floor(random(0,6));
 
-  //video.size(width, height);
-
-  // Create a new poseNet method with a single detection
-  poseNet = ml5.poseNet(video, modelReady);
-  // This sets up an event that fills the global variable "poses"
-  // with an array every time new poses are detected
-  poseNet.on('pose', function(results) {
-    poses = results;
-  });
-  // Hide the video element, and just show the canvas
-  video.hide();
-   //x = width/2
-  //y = height/2
-
 }
+
 function gotPoses(poses) {
   if (poses.length > 0) {
 
@@ -113,11 +102,10 @@ function gotPoses(poses) {
 
   }
 }
-poseNet = ml5.poseNet(modelReady, options);
 function modelReady() {
-  select('#status').html('Model Loaded');
-
+  console.log('model ready');
 }
+
 
 function draw() {
 
@@ -161,7 +149,6 @@ function draw() {
 
     image(leyes[r], pose.leftEye.x, pose.leftEye.y, d * 1.5, d * 1.5); //왼눈
 
-    image(mouth[r], pose.nose.x, pose.nose.y + 50, d * 1.25, d * 1.25); //입= 코 y축 플러스
 
     image(rwrist[r], pose.rightWrist.x, pose.rightWrist.y, d * 4, d * 6 ); //오른손
     image(lwrist[r], pose.leftWrist.x, pose.leftWrist.y, d * 4, d * 6 ); //왼손
