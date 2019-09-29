@@ -143,7 +143,7 @@ function draw() {
     // For each pose detected, loop through all the keypoints
     let pose = poses[i].pose;
 
-  //let d = dist(pose.nose.x, pose.nose.y, pose.rightEye.x, pose.rightEye.y);
+  let d = dist(pose.nose.x, pose.nose.y, pose.rightEye.x, pose.rightEye.y, pose.rightEar.x, pose.rightEar.y, pose.leftEar.x, pose.leftEar.y, pose.leftEye.x, pose.leftEye.y, pose.rightWrist.x, pose.rightWrist.y, pose.leftWrist.x, pose.leftWrist.y  );
 
     imageMode(CENTER);
     image(head, pose.nose.x, pose.nose.y - 120, d * 4, d * 3); //머리=코 y축 마이너스
@@ -175,18 +175,18 @@ function draw() {
 }
 
 // A function to draw ellipses over the detected keypoints
-let logged = false;
-function drawKeypoints()  {
+//let logged = false;
+//function drawKeypoints()  {
 	if (poses.length > 0 && !logged) {
 		console.log(poses);
 		logged = true;
 	}
   // Loop through all the poses detected
-  for (let i = 0; i < poses.length; i++) {
+  for (i = 0; i < poses.length; i++) {
     // For each pose detected, loop through all the keypoints
-    let pose = poses[i].pose;
+    //let pose = poses[i].pose;
 
-    for (let j = 0; j < pose.keypoints.length; j++) {
+    for (j = 0; j < pose.keypoints.length; j++) {
       // A keypoint is an object describing a body part (like rightArm or leftShoulder)
       let keypoint = pose.keypoints[j];
       // Only draw an ellipse is the pose probability is bigger than 0.2
