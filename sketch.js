@@ -19,11 +19,31 @@ var rears = []; //오른귀
 var lears = []; //왼귀
 var rwrist = []; //오른 손목
 var lwrist = []; //왼손목
-////포즈넷 키포인트///
-let x = 0;
-let y = 0;
 
-let img;
+////포즈넷 키포인트///
+let noseX = 0;
+let noseY = 0;
+let faceX = 0;
+let faceY= 0;
+let headX = 0;
+let headY = 0;
+let rightEyeX = 0;
+let rightEyeY = 0;
+let leftEyeX = 0;
+let leftEyeY = 0;
+let mouthsX = 0;
+let mouthsY = 0;
+let leftEarX = 0;
+let leftEarY = 0;
+let rightEarX = 0;
+let rightEarY = 0;
+let rightWristX = 0;
+let rightWristY = 0;
+let leftWristX = 0;
+let leftWristY =0;
+
+
+let img ;
 function preload() {
   for (var  i = 0; i <2; i++) {
   mouths[i] = loadImage('mouths/m' + i + '.png');
