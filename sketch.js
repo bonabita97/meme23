@@ -15,7 +15,7 @@ var mouths = []; //입
 var reyes = []; //오른눈
 var leyes = []; //왼눈
 var noses = []; //코
-var faces = []; //얼굴
+
 var rears = []; //오른귀
 var lears = []; //왼귀
 var rwrist = []; //오른 손목
@@ -31,7 +31,7 @@ function preload() {
   reyes[i] = loadImage('reyes/re' + i + '.png');
   leyes[i] = loadImage('leyes/le' + i + '.png');
   noses[i] = loadImage('noses/n' + i + '.png');
-  faces[i] = loadImage('faces/f' + i + '.png');
+
   rears[i] = loadImage('rears/rear' + i + '.png');
   lears[i] = loadImage('lears/lear' + i + '.png');
   rwrist[i] = loadImage('rwrists/rwrist' + i + '.png');
@@ -148,7 +148,7 @@ function draw() {
     imageMode(CENTER);
     image(head, pose.nose.x, pose.nose.y - 120, d * 4, d * 3); //머리=코 y축 마이너스
 
-    image(face[r], pose.nose.x, pose.nose.y, d * 3.5, d * 4); //얼굴=코
+
 
     image(rears[r], pose.rightEar.x - 10, pose.rightEar.y, d * 1.25, d * 1.25); //오른귀
 
