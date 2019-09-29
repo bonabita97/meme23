@@ -26,7 +26,7 @@ let y = 0;
 
 let img;
 function preload() {
-  for (var  i = 0; i <6; i++) {
+  for (var  i = 0; i <3; i++) {
   mouths[i] = loadImage('mouths/m' + i + '.png');
   reyes[i] = loadImage('reyes/re' + i + '.png');
   leyes[i] = loadImage('leyes/le' + i + '.png');
@@ -34,8 +34,8 @@ function preload() {
   faces[i] = loadImage('faces/f' + i + '.png');
   rears[i] = loadImage('rears/rear' + i + '.png');
   lears[i] = loadImage('lears/lear' + i + '.png');
-  rwrist[i] = loadImage('rwrist/rwrist' + i + '.png');
-  lwrist[i] = loadImage('lwrist/lwrist' + i + '.png');
+  rwrist[i] = loadImage('rwrists/rwrist' + i + '.png');
+  lwrist[i] = loadImage('lwrists/lwrist' + i + '.png');
     //이미지 로드 정확한 파일명 적을 것
 
 
