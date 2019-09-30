@@ -16,8 +16,6 @@ function preload() {
 
 function setup() {
 
-    button = createButton('start');
-    button.position(20,65);
     // setup camera capture
     videoInput = createCapture();
     videoInput.size(800, 600);
@@ -49,7 +47,6 @@ function setup() {
 
 function draw() {
     var cnv = createCanvas(800, 600);
-    button.mousePressed(cnv);
     cnv.position(200, 110);
 
     clear();
