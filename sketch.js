@@ -3,7 +3,7 @@ let radio; // radio input
 let videoInput; // video input
 let xPosRectMask = 10; // rectangle boo x position
 let xStepRectMask = 100; // rectangle boo x step
-
+let button;
 function preload() {
 
     // uploading images
@@ -16,15 +16,15 @@ function preload() {
 
 function setup() {
 
+    button = createButton('start');
+    button.position(20,65);
     // setup camera capture
     videoInput = createCapture();
     videoInput.size(800, 600);
     videoInput.position(200, 110);
     videoInput.loop();
+    videoInput.hide();
 
-    // setup canvas
-    var cnv = createCanvas(800, 600);
-    cnv.position(200, 110);
 
     // setup tracker
     ctracker = new clm.tracker();
@@ -46,7 +46,12 @@ function setup() {
     radio.position(1020, 120);
 }
 
+
 function draw() {
+    var cnv = createCanvas(800, 600);
+    button.mousePressed(cnv);
+    cnv.position(200, 110);
+
     clear();
     noStroke();
     var val = radio.value();
@@ -181,7 +186,7 @@ function drawsadness() {
             image(imgKing, positions[i][0], positions[i][1]);
             pop();
         }
-    
+
 }
 
 function drawsadness() {
