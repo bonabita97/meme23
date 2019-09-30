@@ -4,15 +4,28 @@ let noseX = 0;
 let noseY = 0;
 let eyelX = 0;
 let eyelY = 0;
+let input, button, greeting;
 
 var leyes0;
 
+function draw() {
+
+  button = createButton('start');
+  button.position( 50 ,50,  65);
+  button.mousePressed(start);
+};
+
+function start(){
+  start = createCapture(VIDEO);
+  start.hide();
+};
+
 function setup() {
   createCanvas(640, 480);
-  video = createCapture(VIDEO);
-  video.hide();
+
   poseNet = ml5.poseNet(video, modelReady);
   poseNet.on('pose', gotPoses);
+
 }
 
 function gotPoses(poses) {
@@ -38,6 +51,7 @@ function preload() {
   leyes0 = loadImage('leyes0.png');
 
 function draw() {
+
   image(video, 0, 0);
 
   let d = dist(noseX, noseY, eyelX, eyelY);
