@@ -35,9 +35,9 @@ function setup() {
     radio = createRadio();
     radio.option("cool", 1);
     radio.option("king", 2);
-    radio.option("b2", 3);
-    radio.option("p3", 4);
-    radio.option("fog", 5);
+    radio.option("soso", 3);
+    radio.option("what", 4);
+
 
     // styling radio
     radio.style('width', '60px');
@@ -60,8 +60,6 @@ function draw() {
         drawMask();
     } if (val == 4) {
         drawking();
-    } if (val == 5) {
-        drawcat();
     }
 }
 
@@ -154,25 +152,25 @@ function drawsadness() {
     }
 }
 
-function drawking() {
+//function drawking() {
     // draw transparent rectangle
-    fill(53, 0, 81, 120);
-    rect(0, 0, 800, 600);
+  //  fill(53, 0, 81, 120);
+    //rect(0, 0, 800, 600);
 
     // make video as pixels
-    videoInput.loadPixels();
+  //  videoInput.loadPixels();
 
     // draw pixels
-    var stepSize = round(constrain(20, 6, 32));
-        for (var y=0; y<height; y+=stepSize) {
-        for (var x=0; x<width; x+=stepSize) {
-          var i = y * width + x;
-          var darkness = (255 - videoInput.pixels[i*4]) / 255;
-          var radius = stepSize * darkness;
-          fill(random(255));
-          ellipse(x, y, radius, radius);
-        }
-    }
+    //var stepSize = round(constrain(20, 6, 32));
+        //for (var y=0; y<height; y+=stepSize) {
+        //for (var x=0; x<width; x+=stepSize) {
+          //var i = y * width + x;
+          //var darkness = (255 - videoInput.pixels[i*4]) / 255;
+          //var radius = stepSize * darkness;
+          //fill(random(255));
+          //ellipse(x, y, radius, radius);
+
+
 
     // put image based on face tracker
     var positions = ctracker.getCurrentPosition();
@@ -183,7 +181,7 @@ function drawking() {
             image(imgKing, positions[i][0], positions[i][1]);
             pop();
         }
-    }
+    
 }
 
 function drawsadness() {
