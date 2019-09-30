@@ -1,133 +1,117 @@
-// Copyright (c) 2018 ml5
-//
-// This software is released under the MIT License.
-// https://opensource.org/licenses/MIT
-
-/* ===
-ml5 Example
-PoseNet example using p5.js
-=== */
 
 let video;
 let poseNet;
 let poses = [];
-var mouths = []; //입
-var reyes = []; //오른눈
-var leyes = []; //왼눈
-var noses = []; //코
-var rears = []; //오른귀
-var lears = []; //왼귀
-var rwrist = []; //오른 손목
-var lwrist = []; //왼손목
+//var mouths = [];
+var reyes = [];
+var leyes = [];
+var noses = [];
+//var faces = [];
+var rears = [];
+var lears = [];
+var heads = [];
 
-////포즈넷 키포인트///
-let noseX = 0;
-let noseY = 0;
-let faceX = 0;
-let faceY= 0;
-let headX = 0;
-let headY = 0;
-let rightEyeX = 0;
-let rightEyeY = 0;
-let leftEyeX = 0;
-let leftEyeY = 0;
-let mouthsX = 0;
-let mouthsY = 0;
-let leftEarX = 0;
-let leftEarY = 0;
-let rightEarX = 0;
-let rightEarY = 0;
-let rightWristX = 0;
-let rightWristY = 0;
-let leftWristX = 0;
-let leftWristY =0;
+let x = 0;
+let y = 0;
 
-
-let img ;
+let img;
 function preload() {
-  for (var  i = 0; i <2; i++) {
-  mouths[i] = loadImage('mouths/m' + i + '.png');
+  for (var  i = 0; i <1; i++) {
+  //mouths[i] = loadImage('mouths/m' + i + '.png');
   reyes[i] = loadImage('reyes/re' + i + '.png');
   leyes[i] = loadImage('leyes/le' + i + '.png');
   noses[i] = loadImage('noses/n' + i + '.png');
-
+  //faces[i] = loadImage('faces/f' + i + '.png');
   rears[i] = loadImage('rears/rear' + i + '.png');
   lears[i] = loadImage('lears/lear' + i + '.png');
-  rwrist[i] = loadImage('rwrists/rwrist' + i + '.png');
-  lwrist[i] = loadImage('lwrists/lwrist' + i + '.png');
-    //이미지 로드 정확한 파일명 적을 것
 
+  heads[i] = loadImage('heads/head' + i+ '.png');
 
-  head = loadImage('hair.png');
+  //폰트 = loadFont('assets/폰트.otf');
 
   }
-}
+
 
 function setup() {
-
   createCanvas(640, 480);
-  video = createCapture(VIDEO);
-  video.hide();
-  poseNet = ml5.poseNet(video, modelReady);
-  poseNet.on('pose', gotPoses);
-  r = floor(random(0,6));
+  //§createCanvas(windowWidth, windowHeight);
+  //video.size(width, height);
 
+  video = createCapture(VIDEO);
+  mic = new p5.AudioIn()
+  mic.start();
+
+
+
+
+  //video.size(width, height);
+
+  // Create a new poseNet method with a single detection
+  poseNet = ml5.poseNet(video, modelReady);
+  // This sets up an event that fills the global variable "poses"
+  // with an array every time new poses are detected
+  poseNet.on('pose', function(results) {
+    poses = results;
+  });
+  // Hide the video element, and just show the canvas
+  video.hide();
+   x = width/2
+  //y = height/2
 }
 
 function gotPoses(poses) {
   if (poses.length > 0) {
-    let hX = poses[0].pose.keypoints[0].position.x //머리x =코 포지션
-    let hY = poses[0].pose.keypoints[0].position.y //머리y =코 포지션
-    let nX = poses[0].pose.keypoints[0].position.x //코x
-    let nY = poses[0].pose.keypoints[0].position.y //코y
-    let fX =  poses[0].pose.keypoints[0].position.x
-    let fY =  poses[0].pose.keypoints[0].position.x
-    let elX = poses[0].pose.keypoints[1].position.x //왼눈x
-    let elY = poses[0].pose.keypoints[1].position.y //왼눈y
-    let erX = poses[0].pose.keypoints[2].position.x //오른눈x
-    let erY = poses[0].pose.keypoints[2].position.y //오른눈y
-    let mX = poses[0].pose.keypoints[0].position.x //입x= 코 포지션
-    let mY = poses[0].pose.keypoints[0].position.y //입y =코 포지션
-    let reX = poses[0].pose.keypoints[4].position.x //오른귀x
-    let reY = poses[0].pose.keypoints[4].position.y //오른귀y
-    let rwX = poses[0].pose.keypoints[10].position.x //오른손목x
-    let rwY = poses[0].pose.keypoints[10].position.y //오른손목y
-    let lwX = poses[0].pose.keypoints[9].position.x //왼손목x
-    let lwY = poses[0].pose.keypoints[9].position.y //왼손목y
-    let leX = poses[0].pose.keypoints[3].position.x //왼귀x
-    let leY = poses[0].pose.keypoints[3].position.y //왼귀y
+  //let fX = poses[0].pose.keypoints[0].position.x
+  //let fY = poses[0].pose.keypoints[0].position.y
+  let hX = poses[0].pose.keypoints[0].position.x
+  let hY = poses[0].pose.keypoints[0].position.y
+  let nX = poses[0].pose.keypoints[0].position.x
+  let nY = poses[0].pose.keypoints[0].position.y
+  let elX = poses[0].pose.keypoints[1].position.x
+  let elY = poses[0].pose.keypoints[1].position.y
+  let erX = poses[0].pose.keypoints[2].position.x
+  let erY = poses[0].pose.keypoints[2].position.y
+  //let mX = poses[0].pose.keypoints[0].position.x
+  //let mY = poses[0].pose.keypoints[0].position.y
+  let reX = poses[0].pose.keypoints[4].position.x
+  let reY = poses[0].pose.keypoints[4].position.y
+  //let rwX = poses[0].pose.keypoints[10].position.x
+  //let rwY = poses[0].pose.keypoints[10].position.y
+  let leX = poses[0].pose.keypoints[3].position.x
+  let leY = poses[0].pose.keypoints[3].position.y
+  pose.nose.x = lerp(pose.nose.x, nX, 0.5);
+  pose.nose.y = lerp(pose.nose.y, nY, 0.5);
+  ///pose.nose.x = lerp(pose.nose.x, fX, 0.5);
+  ///pose.nose.y = lerp(pose.nose.y, fY, 0.5);
+  pose.nose.x = lerp(pose.nose.x, hX, 0.5);
+  pose.nose.y = lerp(pose.nose.y, hY, 0.5);
+  pose.rightEye.x = lerp(pose.rightEye.x, reX, 0.5);
+  pose.rightEye.y = lerp(pose.rightEye.y, reY, 0.5);
+  pose.leftEye.x = lerp(pose.leftEye.x, reX, 0.5);
+  pose.leftEye.y = lerp(pose.leftEye.y, reY, 0.5);
+  ///pose.nose.x = lerp(pose.nose.x, mX, 0.5);
+  ///.nose.y = lerp(pose.nose.y, mY, 0.5);
+  //pose.nose.x = lerp(pose.nose.x, mX, 0.5);
+  //pose.nose.y = lerp(pose.nose.y, mY, 0.5);
+  pose.leftEar.x = lerp(pose.leftEar.x, leX, 0.5);
+  pose.leftEar.y = lerp(pose.leftEar.y, leY, 0.5);
+  pose.rightEar.x = lerp(pose.rightEar.x, reX, 0.5);
+  pose.rightEar.y = lerp(pose.rightEar.y, reY, 0.5);
+  //pose.rightWrist.x = lerp(pose.rightWrist.x, rwX, 0.5);
+  //pose.rightWrist.y = lerp(pose.rightWrist.y, rwY, 0.5);
 
-    noseX = lerp(noseX, nX, 0.5); //코
-    noseY = lerp(noseY, nY, 0.5); //코
-    faceX = lerp(noseX, fX, 0.5); //얼굴
-    faceY= lerp(noseY, fY, 0.5);  //얼굴
-    headX = lerp(headX, hX, 0.5); //머리
-    headY = lerp(headY, hY, 0.5); //머리
-    rightEyeX = lerp(rightEyeX, reX, 0.5); //오른눈
-    rightEyeY = lerp(rightEyeY, reY, 0.5); //오른눈
-    leftEyeX = lerp(leftEyeX, reX, 0.5); //왼눈
-    leftEyeY = lerp(leftEyeY, reY, 0.5); //왼눈
-    mouthsX = lerp(mouthsX, mX, 0.5); //입
-    mouthsY = lerp(mouthsY, mY, 0.5); //입
-    leftEarX = lerp(leftEarX, leX, 0.5); //왼귀
-    leftEarY = lerp(leftEarY, leY, 0.5); //왼귀
-    rightEarX = lerp(rightEarX, reX, 0.5); //오른귀
-    rightEarY = lerp(rightEarY, reY, 0.5); //오른귀
-    rightWristX = lerp(rightWristX, rwX, 0.5); //오른손
-    rightWristY = lerp(rightWristY, rwY, 0.5); //오른손
-    leftWristX = lerp(leftWristX, lwX, 0.5); //왼손
-    leftWristY = lerp(leftWristY, lwY, 0.5); //왼손
+
   }
 }
 
 function modelReady() {
-  console.log('model ready');
+  select('#status').html('Model Loaded');
+
 }
 
-
 function draw() {
-
-
+  //x = map(vol, 0, 0.1, 20, 200);
+  vol = mic.getLevel();
   push();
   scale(-1, 1);
   translate(-width, 0);
@@ -136,53 +120,72 @@ function draw() {
   pop();
   imageMode(CORNER);
   image(video, 0, 0);
-  if (mouseIsPressed) {
-  r = floor(random(0,6));
+  if (mouseIsPressed ) {
+  r = floor(random(0,2));
   random(loadImage);
-} else { }
+  } else {
+  //image(faces[r]);
+  //image(noses[r]);
 
-
-
+  }
+}
 
 
   for (let i = 0; i < poses.length; i++) {
     // For each pose detected, loop through all the keypoints
     let pose = poses[i].pose;
 
-  let d = dist(noseX, noseY, leftEyeX, leftEyeY, rightEyeX, rightEyeY);
+  let d = dist(pose.nose.x, pose.nose.y, pose.rightEye.x, pose.rightEye.y);
 
     imageMode(CENTER);
-    image(head, noseX, noseY - 120 ); //머리=코 y축 마이너스
-
-
-
-    image(rears[r], rightEarX, rightEarY ); //오른귀
-
-		image(lears[r], leftEarX, leftEarY ); //왼귀
-
-
-    image(noses[r], noseX, noseY, d); //코
-
-    image(reyes[r], rightEyeX, rightEyeY, d); //오른눈
-
-    image(leyes[r], leftEyeX, leftEyeY, d); //왼눈
-
-
-    image(rwrist[r],rightWristX, rightWristY ); //오른손
-    image(lwrist[r], leftWristX, leftWristY ); //왼손
-
-
+    image(head[r], pose.nose.x, pose.nose.y - 120, d * 4, d * 3);
+     image(rears[r], pose.rightEar.x - 10, pose.rightEar.y, d * 1.25, d * 1.25);
+    image(lears[r], pose.leftEar.x + 5, pose.leftEar.y - 10, d * 1.25, d * 1.25);
+    image(noses[r], pose.nose.x, pose.nose.y - 15, d * 1.5, d * 1.5);
+    image(reyes[r], pose.rightEye.x, pose.rightEye.y, d * 1.75, d * 1.75);
+    image(leyes[r], pose.leftEye.x, pose.leftEye.y, d * 1.5, d * 1.5);
   }
 
-  // We can call both functions to draw all keypoints and the skeletons
-  // drawKeypoints();
-  // drawSkeleton();
-}
-
+// A function to draw ellipses over the detected keypoints
 let logged = false;
 function drawKeypoints()  {
 	if (poses.length > 0 && !logged) {
 		console.log(poses);
 		logged = true;
-	}}
-// A function to draw ellipses over the detected keypoints
+	}
+  // Loop through all the poses detected
+  for (let i = 0; i < poses.length; i++) {
+    // For each pose detected, loop through all the keypoints
+    let pose = poses[i].pose;
+
+    for (let j = 0; j < pose.keypoints.length; j++) {
+      // A keypoint is an object describing a body part (like rightArm or leftShoulder)
+      let keypoint = pose.keypoints[j];
+      // Only draw an ellipse is the pose probability is bigger than 0.2
+      if (keypoint.score > 0.2) {
+        fill(255, 0, 0);
+        noStroke();
+        ellipse(keypoint.position.x, keypoint.position.y, 10, 10);
+      }
+    }
+		fill(255, 0, 255);
+    noStroke();
+		ellipse(pose.nose.x, pose.nose.y, 20, 20);
+  }
+}
+
+// A function to draw the skeletons
+function drawSkeleton() {
+  // Loop through all the skeletons detected
+  for (let i = 0; i < poses.length; i++) {
+    let skeleton = poses[i].skeleton;
+    // For every skeleton, loop through all body connections
+    for (let j = 0; j < skeleton.length; j++) {
+      let partA = skeleton[j][0];
+      let partB = skeleton[j][1];
+      stroke(255, 0, 0);
+      line(partA.position.x, partA.position.y, partB.position.x, partB.position.y);
+    }
+  }
+}
+}
