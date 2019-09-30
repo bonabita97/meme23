@@ -7,11 +7,11 @@ let xStepRectMask = 100; // rectangle boo x step
 function preload() {
 
     // uploading images
-    imgMask = loadImage("assets/spirited-away.png");
-    imgDaftPunk = loadImage("assets/daft.png");
-    imgDogNose = loadImage("assets/dog-nose.png");
-    imgDogEarRight = loadImage("assets/dog-ear-right.png");
-    imgDogEarLeft = loadImage("assets/dog-ear-left.png");
+    imgcat = loadImage("assets/catmouth.png");
+    imgKing = loadImage("assets/king.png");
+    imgtear = loadImage("assets/tear.png");
+    imglefthand = loadImage("assets/lefthand.png");
+    imgrightehand = loadImage("assets/rightehand.png");
 }
 
 function setup() {
@@ -34,7 +34,7 @@ function setup() {
     // create radio options
     radio = createRadio();
     radio.option("cool", 1);
-    radio.option("1", 2);
+    radio.option("king", 2);
     radio.option("b2", 3);
     radio.option("p3", 4);
     radio.option("fog", 5);
@@ -55,13 +55,13 @@ function draw() {
     if (val == 1) {
         drawFilterCool();
     } if (val == 2) {
-        drawDogFace();
+        drawsadness();
     } if (val == 3) {
         drawMask();
     } if (val == 4) {
-        drawDaftPunk();
+        drawking();
     } if (val == 5) {
-        drawVidPixel();
+        drawcat();
     }
 }
 
@@ -114,7 +114,7 @@ function drawHat() {
     }
 }
 
-function drawVidPixel() {
+function drawcat() {
     // draw transparent rectangle
     fill(255, 255, 255, 50);
     rect(0, 0, 800, 600);
@@ -133,7 +133,7 @@ function drawVidPixel() {
     }
 }
 
-function drawMask() {
+function drawsadness() {
     // draw transparent rectable on top
     fill(0, 0, 0, 200);
     rect(0, 0, 800, 600);
@@ -149,12 +149,12 @@ function drawMask() {
     for (var i=0; i<positions.length; i++) {
         if (i == 62) {
             translate(-94, -160);
-            image(imgMask, positions[i][0], positions[i][1]);
+            image(imgcat, positions[i][0], positions[i][1]);
         }
     }
 }
 
-function drawDaftPunk() {
+function drawking() {
     // draw transparent rectangle
     fill(53, 0, 81, 120);
     rect(0, 0, 800, 600);
@@ -180,32 +180,32 @@ function drawDaftPunk() {
         if (i == 62) {
             push();
             translate(-150, -240);
-            image(imgDaftPunk, positions[i][0], positions[i][1]);
+            image(imgKing, positions[i][0], positions[i][1]);
             pop();
         }
     }
 }
 
-function drawDogFace() {
+function drawsadness() {
     // put image based on face tracker
     var positions = ctracker.getCurrentPosition();
     for (var i=0; i<positions.length; i++) {
         if (i == 62) {
             push();
             translate(-57, -20);
-            image(imgDogNose, positions[i][0], positions[i][1]);
+            image(imgcatmouth, positions[i][0], positions[i][1]);
             pop();
         }
         if (i == 20) {
             push();
             translate(-100, -150);
-            image(imgDogEarRight, positions[i][0], positions[i][1]);
+            image(imglefthand, positions[i][0], positions[i][1]);
             pop();
         }
         if (i == 16) {
             push();
             translate(-20, -150);
-            image(imgDogEarLeft, positions[i][0], positions[i][1]);
+            image(imgrighthand, positions[i][0], positions[i][1]);
             pop();
         }
     }
