@@ -17,7 +17,7 @@ function draw() {
 
 function start(){
   start = createCapture(VIDEO);
-  start.hide();
+  //start.hide();
 };
 
 function setup() {
