@@ -154,7 +154,7 @@ function drawMask() {
     }
 }
 
-function drawDaftPunk() {    
+function drawDaftPunk() {
     // draw transparent rectangle
     fill(53, 0, 81, 120);
     rect(0, 0, 800, 600);
