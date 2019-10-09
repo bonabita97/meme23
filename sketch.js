@@ -20,6 +20,7 @@ var rears = [];
 var lears = [];
 var mic;
 var vol;
+var video;
 let x = 0;
 let y = 0;
 
